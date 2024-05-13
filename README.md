@@ -1,6 +1,6 @@
-# sync-branches
+# sync-branches-gh
 
-GitHub Action to sync one branch when another is updated.
+GitHub Action to sync one branch when another is updated. This is a fork of [sync-branches](https://github.com/TreTuna/sync-branches) repository that does not seem to be maintained anymore.
 
 ## Inputs
 
@@ -94,7 +94,7 @@ jobs:
           node-version: 12
       - name: Opening pull request
         id: pull
-        uses: tretuna/sync-branches@1.4.0
+        uses: duckdum/sync-branches-gh@v1.8.0
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: "main"
