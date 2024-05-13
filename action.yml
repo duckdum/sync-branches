@@ -1,4 +1,4 @@
-name: "Sync branches"
+name: "Sync branches gh"
 description: "GitHub Action to, upon successful merge, open a pull request to sync the updated branch back to one or more other branches."
 branding:
   icon: git-pull-request
@@ -47,5 +47,5 @@ outputs:
   PULL_REQUEST_NUMBER:
     description: "Pull request number from generated pull request or the currently open one"
 runs:
-  using: "node12"
+  using: "node20"
   main: "dist/index.js"
