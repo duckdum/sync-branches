@@ -4228,8 +4228,19 @@ exports.getBooleanInput = getBooleanInput;
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function setOutput(name, value) {
-    process.stdout.write(os.EOL);
-    command_1.issueCommand('set-output', { name }, value);
+  const outputFilePath = process.env.GITHUB_OUTPUT;
+
+  if (outputFilePath) {
+    const commandValue = `${name}=${value}${os.EOL}`;
+    try {
+      fs.appendFileSync(outputFilePath, commandValue, { encoding: 'utf8' });
+      console.log(`Set output ${name}=${value}`);
+    } catch (error) {
+      console.error(`Failed to write to ${outputFilePath}: ${error.message}`);
+    }
+  } else {
+    console.error('GITHUB_OUTPUT environment variable is not set.');
+  }
 }
 exports.setOutput = setOutput;
 /**
